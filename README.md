@@ -6,7 +6,7 @@ This repository contains the implementation of our paper:
 
 Our research aims to address code generation by proposing MoT prompting technique. The key contributions include:
 - **Contribution 1**: We propose a novel prompting technique, called MoT, to improve the code generation performance of LLMs by incorporating the modularization principles of software development into the reasoning process. To further enhance modular understanding and reduce the discrepancy between initial reasoning and final output, we design a novel Multi-Level Reasoning Graph.
-- **Contribution 2**: We conducted extensive experiments on two LLMs (i.e., GPT-4o-mini and DeepSeek-R1) with six benchmarks, comparing them with eight baselines to demonstrate the effectiveness of MoT in improving code generation performance. To encourage future research in this area and facilitate replication, we have made our data and code publicly available at https://anonymous.4open.science/r/MoT.
+- **Contribution 2**: We conducted extensive experiments on two LLMs (i.e., GPT-4o-mini and DeepSeek-R1) with six benchmarks, comparing them with eight baselines to demonstrate the effectiveness of MoT in improving code generation performance. To encourage future research in this area and facilitate replication, we have made our data and code publicly available at https://anonymous.4open.science/r/Modularization-of-thought
 
 ## Installation
 Our code is implemented in Python and tested on Linux.

@@ -13,31 +13,21 @@ from typing import List, Tuple, Optional,Dict, Any
 @ell.simple(model="deepseek-r1", client=client)
 def MoT(problem: str):
     """
-You are a Mo-of-Thought Generation Agent. Your task is to analyze the problem and generate an expected Multi-Level Reasoning Graph for code generation. You must only output the graph.
-
+You are a code reasoning assistant. Your task is to analyze the given programming problem and generate a structured reasoning graph (Multi-Level Reasoning Graph, MLR Graph) to guide the code generation process. Provide your reasoning in the following hierarchical textual format clearly:
 ###  Format
-
 H1 [High-Level]: Solve the problem: {Problem description}
-  Reasoning: Break the problem into major tasks: {High-level task 1}, {High-level task 2}, and {High-level task 3}.
+  Reasoning: Break the problem into major tasks: {High-level task 1} and {High-level task 2}.
   ├── H1.1 [High-Level]: {Subtask 1 of High-Level}
   │       Reasoning: {Reasoning for subtask 1}
   │       ├── I1.1 [Intermediate-Level]: {Intermediate-level task 1 for subtask 1}
   │       │         Reasoning: {Reasoning for intermediate-level task 1}
   │       └── I1.2 [Intermediate-Level]: {Intermediate-level task 2 for subtask 1}
   │                 Reasoning: {Reasoning for intermediate-level task 2}
-  ├── H1.2 [High-Level]: {Subtask 2 of Top-Level}
+  ├── H1.2 [High-Level]: {Subtask 2 of High-Level}
   │       Reasoning: {Reasoning for subtask 2}
   │       ├── I2.1 [Intermediate-Level]: {Intermediate-level task 1 for subtask 2}
   │       │         Reasoning: {Reasoning for intermediate-level task 1}
-  │       │         └── D2.1 [Detailed-Level]: {Code snippet for detailed-level task 1}
-  │       └── I2.2 [Intermediate-Level]: {Intermediate-level task 2 for subtask 2}
-  │                 Reasoning: {Reasoning for intermediate-level task 2}
-  │                 └── D2.2 [Detailed-Level]: {Code snippet for detailed-level task 2}
-  └── H1.3 [High-Level]: {Subtask 3 of Top-Level}
-          Reasoning: {Reasoning for subtask 3}
-          └── I3.1 [Intermediate-Level]: {Intermediate-level task for subtask 3}
-                    Reasoning: {Reasoning for intermediate-level task}
-                    └── D3.1 [Detailed-Level]: {Code snippet for detailed-level task}
+  │       │         └── D2.1 [Detailed-Level]: {Detailed implementation details or pseudo-code}
                     
     """
     return (
@@ -45,13 +35,16 @@ H1 [High-Level]: Solve the problem: {Problem description}
     )
 
 @ell.simple(model="deepseek-r1", client=client)
-def Code(problem: str, graph: str):
+def Code(problem: str, MLR_graph: str):
     """
-    You are a Code Generation Agent. Your task is to generate a expected code. You Must only output the generated code.
+You are a code generation assistant. Your task is to generate modular code based on the given structured reasoning (MLR graph). You must only output the generated code.
+
+Output: Provide only the complete code corresponding to the given structured reasoning. If possible, organize the code into multiple modular functions.
+
     """ 
     return (
-        f"Here is the analyse of the problem: \n{graph}\n"
-        f"Here is the problem:\n{problem}\nYou Must only output the generated code."
+        f"Structured Reasoning (MLR graph): {MLR_graph}. "
+        f"Output: Provide only the complete code corresponding to the given structured reasoning. If possible, organize the code into multiple modular functions."
     )
 
 
