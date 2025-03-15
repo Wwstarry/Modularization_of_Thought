@@ -13,7 +13,7 @@ from typing import List, Tuple, Optional,Dict, Any
 @ell.simple(model="deepseek-r1", client=client)
 def MoT(problem: str):
     """
-You are a code reasoning assistant. Your task is to analyze the given programming problem and generate a structured reasoning graph (Multi-Level Reasoning Graph, MLR Graph) to guide the code generation process. Provide your reasoning in the following hierarchical textual format clearly:
+You are a code reasoning assistant. Your task is to analyze the given programming problem and generate a modular reasoning graph (Multi-Level Reasoning Graph, MLR Graph) to guide the code generation process. Provide your reasoning in the following hierarchical textual format clearly:
 ###  Format
 H1 [High-Level]: Solve the problem: {Problem description}
   Reasoning: Break the problem into major tasks: {High-level task 1} and {High-level task 2}.
@@ -28,6 +28,7 @@ H1 [High-Level]: Solve the problem: {Problem description}
   │       ├── I2.1 [Intermediate-Level]: {Intermediate-level task 1 for subtask 2}
   │       │         Reasoning: {Reasoning for intermediate-level task 1}
   │       │         └── D2.1 [Detailed-Level]: {Detailed implementation details or pseudo-code}
+
                     
     """
     return (
@@ -37,15 +38,13 @@ H1 [High-Level]: Solve the problem: {Problem description}
 @ell.simple(model="deepseek-r1", client=client)
 def Code(problem: str, MLR_graph: str):
     """
-You are a code generation assistant. Your task is to generate modular code based on the given structured reasoning (MLR graph). You must only output the generated code.
 
-Output: Provide only the complete code corresponding to the given structured reasoning. If possible, organize the code into multiple modular functions.
+You are a code generation assistant. Your task is to generate modular code based on the given modular reasoning (MLR graph). You must only output the generated code.
 
     """ 
     return (
-        f"Structured Reasoning (MLR graph): {MLR_graph}. "
-        f"Output: Provide only the complete code corresponding to the given structured reasoning. If possible, organize the code into multiple modular functions."
-    )
+        f"Modular Reasoning (MLR graph): {MLR_graph}."
+        f"Output: Provide only the complete code corresponding to the given modular reasoning. If possible, organize the code into multiple modular functions."   )
 
 
 def extract_code(text: str) -> str:
