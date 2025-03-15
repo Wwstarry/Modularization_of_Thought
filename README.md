@@ -96,7 +96,12 @@ Here is the structured section for **Key Directories and Key Files**, incorporat
 - **`CoT prompting`** [Wei et al., 2022]: Enhances code generation through step-by-step logical reasoning.  
 - **`Self-planning prompting`** [Jiang et al., 2024]: Develops a structured plan before generating code to improve execution correctness.  
 - **`SCoT prompting`** [Li et al., 2025]: Extends CoT prompting by integrating structured program components like loops and conditionals.  
-- **`CodeCoT prompting`** [Huang et al., 2023]: Combines CoT reasoning with self-examination, where the model verifies generated code using test cases before refining outputs.  
+- **`CodeCoT prompting`** [Huang et al., 2023]: Combines CoT reasoning with self-examination, where the model verifies generated code using test cases before refining outputs.
+
+### Detailed Version of the Example MLR Graph
+
+![描述文本](img/image.png)
+
 
 
 
