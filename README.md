@@ -108,12 +108,12 @@ This section presents an **end-to-end example** demonstrating how the **Multi-Le
 We provide:
 1. **Problem Description** – A programming task to be solved.
 2. **Prompt Templates** – How we guide the LLM to generate the MLR Graph and corresponding code.
-3. **MLR Graph** – A structured breakdown of the reasoning process.
+3. **MLR Graph** – A modular breakdown of the reasoning process.
 4. **Generated Modular Code** – Python implementation based on the MLR Graph.
 
 
 
-#### ** Prompt Template for MLR Graph and Code Generation**  
+#### Prompt Template for MLR Graph and Code Generation
 
 The first prompt directs the LLM to construct an **MLR Graph**, while the second instructs it to translate the modular reasoning into modular code.
 
@@ -138,7 +138,7 @@ The goal is to **find the largest sum among the sublists** and then **divide thi
 
 ## Generated Modular Code 
 
-The modular MLR Graph leads to the following modularized generated code:
+The modular MLR Graph leads to the following modular generated code:
 
 ```python
 def validate_input(K):  
