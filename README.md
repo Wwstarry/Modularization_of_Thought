@@ -117,6 +117,38 @@ We provide:
 
 The first prompt directs the LLM to construct an **MLR Graph**, while the second instructs it to translate the modular reasoning into modular code.
 
+**Prompt Template for MLR Graph**
+```python
+
+You are a code reasoning assistant. Your task is to analyze the given programming problem and generate a modular reasoning graph (Multi-Level Reasoning Graph, MLR Graph) to guide the code generation process. Provide your reasoning in the following hierarchical textual format clearly:
+###  Format
+H1 [High-Level]: Solve the problem: {Problem description}
+  Reasoning: Break the problem into major tasks: {High-level task 1} and {High-level task 2}.
+  ├── H1.1 [High-Level]: {Subtask 1 of High-Level}
+  │       Reasoning: {Reasoning for subtask 1}
+  │       ├── I1.1 [Intermediate-Level]: {Intermediate-level task 1 for subtask 1}
+  │       │         Reasoning: {Reasoning for intermediate-level task 1}
+  │       └── I1.2 [Intermediate-Level]: {Intermediate-level task 2 for subtask 1}
+  │                 Reasoning: {Reasoning for intermediate-level task 2}
+  ├── H1.2 [High-Level]: {Subtask 2 of High-Level}
+  │       Reasoning: {Reasoning for subtask 2}
+  │       ├── I2.1 [Intermediate-Level]: {Intermediate-level task 1 for subtask 2}
+  │       │         Reasoning: {Reasoning for intermediate-level task 1}
+  │       │         └── D2.1 [Detailed-Level]: {Detailed implementation details or pseudo-code}
+
+```
+
+**Prompt Template for Code Generation**
+
+```python
+
+You are a code generation assistant. Your task is to generate modular code based on the given modular reasoning (MLR graph). You must only output the generated code.
+Modular Reasoning (MLR graph): {MLR_graph}. 
+Output: Provide only the complete code corresponding to the given modular reasoning. If possible, organize the code into multiple modular functions.
+
+```
+
+
 **Visualization of the Prompting Process:**
 
 ![MLR Graph and Code Prompting](img/prompt.png)
