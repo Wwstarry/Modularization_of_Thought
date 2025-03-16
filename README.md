@@ -117,7 +117,7 @@ We provide:
 
 The first prompt directs the LLM to construct an **MLR Graph**, while the second instructs it to translate the modular reasoning into modular code.
 
-**Visualization of the Prompting Process:**
+** Visualization of the Prompting Process: **
 ![MLR Graph and Code Prompting](img/prompt.png)
 
 
@@ -136,7 +136,7 @@ The goal is to **find the largest sum among the sublists** and then **divide thi
 
 ---
 
-## **💻 Generated Modular Code**  
+## ** Generated Modular Code **  
 
 The modular MLR Graph leads to the following modularized generated code:
 
