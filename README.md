@@ -118,6 +118,7 @@ We provide:
 The first prompt directs the LLM to construct an **MLR Graph**, while the second instructs it to translate the modular reasoning into modular code.
 
 **Visualization of the Prompting Process:**
+
 ![MLR Graph and Code Prompting](img/prompt.png)
 
 
