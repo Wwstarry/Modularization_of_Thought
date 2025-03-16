@@ -102,7 +102,7 @@ Here is the structured section for **Key Directories and Key Files**, incorporat
 
 ---
 
-### **Illustrative Example: Problem, Prompts, MLR Graph, and Generated Code**
+### Illustrative Example: Problem, Prompts, MLR Graph, and Generated Code
 
 This section presents an **end-to-end example** demonstrating how the **Multi-Level Reasoning (MLR) Graph (MLR Graph)** facilitates modular code generation.  
 We provide:
@@ -117,18 +117,18 @@ We provide:
 
 The first prompt directs the LLM to construct an **MLR Graph**, while the second instructs it to translate the modular reasoning into modular code.
 
-** Visualization of the Prompting Process: **
+**Visualization of the Prompting Process:**
 ![MLR Graph and Code Prompting](img/prompt.png)
 
 
 
-#### ** Problem Description**  
+####  Problem Description
 **Task:**  
 You are given a list of lists (an array of arrays) and an integer **K**.  
 The goal is to **find the largest sum among the sublists** and then **divide this sum by K**.
 
 
-#### ** MLR Graph: Modular Reasoning for Code Generation**  
+####  MLR Graph: Modular Reasoning for Code Generation
 
 
 **Generated MLR Graph:**
@@ -136,7 +136,7 @@ The goal is to **find the largest sum among the sublists** and then **divide thi
 
 ---
 
-## ** Generated Modular Code **  
+## Generated Modular Code 
 
 The modular MLR Graph leads to the following modularized generated code:
 
