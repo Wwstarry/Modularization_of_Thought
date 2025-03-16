@@ -3,11 +3,13 @@ This repository contains the implementation of our paper:
 
 **"[Modularization-of-Thought Prompting for Effective Code Generation]"**
 
-
 Our research aims to address code generation by proposing MoT prompting technique. The key contributions include:
-- **Contribution 1**: We propose a novel prompting technique, called MoT, to improve the code generation performance of LLMs by incorporating the modularization principles of software development into the reasoning process. To further enhance modular understanding and reduce the discrepancy between initial reasoning and final output, we design a novel Multi-Level Reasoning Graph.
-- **Contribution 2**: We conducted extensive experiments on two LLMs (i.e., GPT-4o-mini and DeepSeek-R1) with six benchmarks, comparing them with eight baselines to demonstrate the effectiveness of MoT in improving code generation performance. To encourage future research in this area and facilitate replication, we have made our data and code publicly available at https://anonymous.4open.science/r/Modularization-of-thought
+- **Contribution 1**: We propose a novel prompting technique, called MoT, to improve the code generation performance of LLMs by incorporating the modularization principles of software development into the reasoning process. 
+- **Contribution 2**: We design a novel Multi-Level Reasoning Graph to further enhance modular understanding and ensure better alignment between reasoning steps and the generated code.
+- **Contribution 3**:  We conducted extensive experiments on two LLMs (i.e., GPT-4o-mini and DeepSeek-R1) with six benchmarks, comparing them with eight baselines to demonstrate the effectiveness of MoT in improving code generation performance.
 
+Prompts of MoT are presented in prompting techniques/MoT.py. 
+  
 ## Installation
 Our code is implemented in Python and tested on Linux.
 
@@ -98,10 +100,75 @@ Here is the structured section for **Key Directories and Key Files**, incorporat
 - **`SCoT prompting`** [Li et al., 2025]: Extends CoT prompting by integrating structured program components like loops and conditionals.  
 - **`CodeCoT prompting`** [Huang et al., 2023]: Combines CoT reasoning with self-examination, where the model verifies generated code using test cases before refining outputs.
 
-### Detailed Version of the Example MLR Graph
+---
 
-![描述文本](img/image.png)
+### **Illustrative Example: Problem, Prompts, MLR Graph, and Generated Code**
+
+This section presents an **end-to-end example** demonstrating how the **Multi-Level Reasoning (MLR) Graph (MLR Graph)** facilitates modular code generation.  
+We provide:
+1. **Problem Description** – A programming task to be solved.
+2. **Prompt Templates** – How we guide the LLM to generate the MLR Graph and corresponding code.
+3. **MLR Graph** – A structured breakdown of the reasoning process.
+4. **Generated Modular Code** – Python implementation based on the MLR Graph.
 
 
 
+#### ** Prompt Template for MLR Graph and Code Generation**  
+
+The first prompt directs the LLM to construct an **MLR Graph**, while the second instructs it to translate the modular reasoning into modular code.
+
+**Visualization of the Prompting Process:**
+![MLR Graph and Code Prompting](img/prompt.png)
+
+
+
+#### ** Problem Description**  
+**Task:**  
+You are given a list of lists (an array of arrays) and an integer **K**.  
+The goal is to **find the largest sum among the sublists** and then **divide this sum by K**.
+
+
+#### ** MLR Graph: Modular Reasoning for Code Generation**  
+
+
+**Generated MLR Graph:**
+![MLR Graph](img/image.png)
+
+---
+
+## **💻 Generated Modular Code**  
+
+The modular MLR Graph leads to the following modularized generated code:
+
+```python
+def validate_input(K):  
+    """D3.1.1: Check if K is zero"""
+    if K == 0:
+        raise ValueError("K cannot be zero")  # D3.1.2: Raise error for zero division
+
+def compute_sublist_sum(sublist):
+    """D1.2.1: Compute sum using sum() function"""
+    return sum(sublist)
+
+def find_max_sublist_sum(array):
+    """D2.1.1: Initialize max sum and find the maximum sublist sum"""
+    max_sum = float('-inf')  # D2.1.1: Initialize max sum
+
+    for sublist in array:  # D1.1.1: Iterate through the list of lists
+        sublist_sum = compute_sublist_sum(sublist)  # Modularized sum computation
+        if sublist_sum > max_sum:  # D2.1.2: Compare with current max
+            max_sum = sublist_sum  # D2.1.3: Update max_sum
+            
+    return max_sum
+
+def divide_max_sum(max_sum, K):
+    """D3.2.1: Perform division"""
+    return max_sum / K
+
+def largest_sum(array, K):
+    """Main function that orchestrates modularized components"""
+    validate_input(K)  # Validate K before proceeding
+    max_sum = find_max_sublist_sum(array)  # Compute max sublist sum
+    return divide_max_sum(max_sum, K)  # Compute final result
+```
 
