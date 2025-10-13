@@ -205,4 +205,7 @@ def largest_sum(array, K):
     max_sum = find_max_sublist_sum(array)  # Compute max sublist sum
     return divide_max_sum(max_sum, K)  # Compute final result
 ```
+---
+We identified a calculation error in the reported relative improvements. After recomputation, the corrected percentages remain consistent with the same conclusions and trends. The updated results table is included in the appendix and also shown on the anonymous project page; it will be incorporated into the final version. These updates do not affect any claims in the paper.
+![Table](img/table1.png)
 
