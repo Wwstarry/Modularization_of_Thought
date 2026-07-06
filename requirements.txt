@@ -1,0 +1,10 @@
+# Core dependencies for MoT
+openai>=1.0.0
+anthropic>=0.40.0
+
+# Benchmark datasets and evaluation
+evalplus>=0.3.0
+
+# Utilities
+pyyaml>=6.0
+tqdm>=4.65.0

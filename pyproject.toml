@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "mot-prompting"
+version = "1.0.0"
+description = "MoT: Modularization-of-Thought Prompting for Effective Code Generation"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "Ruwei Pan", email = "panruwei@stu.cqu.edu.cn" },
+    { name = "Hongyu Zhang", email = "hyzhang@cqu.edu.cn" },
+]
+requires-python = ">=3.9"
+dependencies = [
+    "openai>=1.0.0",
+    "anthropic>=0.40.0",
+    "evalplus>=0.3.0",
+    "pyyaml>=6.0",
+    "tqdm>=4.65.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "black>=23.0",
+    "ruff>=0.1.0",
+]
+
+[project.urls]
+"Paper" = "https://arxiv.org/abs/2503.12483"
+"Repository" = "https://github.com/panruwei/MoT"
+
+[tool.setuptools.packages.find]
+include = ["mot*", "evaluate*"]
+
+[tool.black]
+line-length = 100
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "W", "I"]

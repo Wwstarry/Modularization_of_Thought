@@ -1,0 +1,22 @@
+# Configuration for GPT-4o-mini (Table 1, top section of the paper)
+#
+# Used to reproduce MoT results with GPT-4o-mini:
+#   HumanEval Pass@1 : 92.1%
+#   HumanEval+ Pass@1: 83.5%
+#   MBPP Pass@1      : 73.9%
+#   MBPP+ Pass@1     : 58.1%
+#
+# API key: set OPENAI_API_KEY environment variable or pass --api-key
+
+backend: openai
+model: gpt-4o-mini
+
+# The paper uses the default temperature provided by the API.
+# GPT-4o-mini default temperature is 1.0.
+temperature: 1.0
+
+# Max tokens for code + MLR graph generation
+max_tokens: 2048
+
+# Retry configuration
+max_retries: 3
